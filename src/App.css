@@ -2,8 +2,20 @@
   text-align: center;
 }
 
+.App h4 {
+  margin-bottom: 20px;
+}
+
 .App-link {
   color: #61dafb;
+}
+
+.App label {
+  display: flex;
+}
+
+.App form {
+  margin-bottom: 30px;
 }
 
 .App button:not(:last-child) {
