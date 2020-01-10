@@ -11,6 +11,7 @@ const App = props => {
         <p>Now {name} is ￥{price}.</p>
 	<button onClick={() => setPrice(price + 1)}>+1</button>
 	<button onClick={() => setPrice(price - 1)}>-1</button>
+	<button onClick={() => setPrice(props.price)}>reset</button>
       </div>
     </>
   )
