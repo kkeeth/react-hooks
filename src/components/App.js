@@ -50,13 +50,16 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          {
-            <tr>
-              <td>{state.id}</td>
-              <td>{state.title}</td>
-              <td>{state.body}</td>
+          {state.map((event, index) => (
+            <tr key={`key-${index}`}>
+              <td>{event.id}</td>
+              <td>{event.title}</td>
+              <td>{event.body}</td>
+              <td>
+                <button className="btn btn-danger">Delete event</button>
+              </td>
             </tr>
-          }
+          ))}
         </tbody>
       </table>
     </div>
