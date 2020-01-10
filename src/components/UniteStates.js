@@ -13,6 +13,10 @@ const UniteStates = props => {
     console.log('This is like componentDidMount.')
   }, [])
 
+   useEffect(() => {
+    console.log('This callback is for name only.')
+  }, [name])
+
   return (
     <>
       <div className="App">
