@@ -6,18 +6,17 @@ const UniteStates = props => {
   const { name, price } = state
 
   useEffect(() => {
-    console.log('use effect is invoked')
+    console.log('This is like componentDidMount or componentDidUpdate.')
   })
 
-  const renderPeriod = () => {
-    console.log('renderPeriod renders period')
-    return '.'
-  }
+  useEffect(() => {
+    console.log('This is like componentDidMount.')
+  }, [])
 
   return (
     <>
       <div className="App">
-        <p>Now {state.name} is ￥{price}{renderPeriod()}</p>
+        <p>Now {state.name} is ￥{price}.</p>
         <button onClick={() => setState({...state, price: price + 1})}>+1</button>
         <button onClick={() => setState({...state, price: price - 1})}>-1</button>
         <button onClick={() => setState(props)}>reset</button>
