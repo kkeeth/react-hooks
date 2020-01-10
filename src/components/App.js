@@ -1,23 +1,25 @@
-import React, { useReducer, useState } from "react"
-import "bootstrap/dist/css/bootstrap.min.css"
-import "../App.css"
-import reducers from "../reducers"
+import React, { useReducer, useState } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import '../App.css'
+
+import Event from './Event'
+import reducers from '../reducers'
 
 const App = () => {
   const [state, dispatch] = useReducer(reducers, [])
-  const [title, setTitle] = useState("")
-  const [body, setBody] = useState("")
+  const [title, setTitle] = useState('')
+  const [body, setBody] = useState('')
 
   const addEvent = e => {
     e.preventDefault()
 
     dispatch({
-      type: "CREATE_EVENT",
+      type: 'CREATE_EVENT',
       title,
       body,
     })
-    setTitle("")
-    setBody("")
+    setTitle('')
+    setBody('')
   }
 
   return (
@@ -51,14 +53,7 @@ const App = () => {
         </thead>
         <tbody>
           {state.map((event, index) => (
-            <tr key={`key-${index}`}>
-              <td>{event.id}</td>
-              <td>{event.title}</td>
-              <td>{event.body}</td>
-              <td>
-                <button className="btn btn-danger">Delete event</button>
-              </td>
-            </tr>
+            <Event key={index} event={event} dispatch={dispatch} />
           ))}
         </tbody>
       </table>
