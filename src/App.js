@@ -12,13 +12,14 @@ const App = props => {
 	<button onClick={() => setPrice(price + 1)}>+1</button>
 	<button onClick={() => setPrice(price - 1)}>-1</button>
 	<button onClick={() => setPrice(props.price)}>reset</button>
+	<input value={name} onChange={e => setName(e.target.value)} />
       </div>
     </>
   )
 }
 
 App.defaultProps = {
-  name: '',
+  name: 'kkeeth',
   price: 1000
 }
 
