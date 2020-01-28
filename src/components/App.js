@@ -24,7 +24,8 @@ const App = () => {
 
   const deleteAllEvents = e => {
     e.preventDefault()
-    dispatch({ type: 'DELETE_ALL_EVENTS' })
+    const result = window.confirm('Is it really OK to delete all events?')
+    if (result) dispatch({ type: 'DELETE_ALL_EVENTS' })
   }
 
   const unCreatable = title === '' || body === ''
