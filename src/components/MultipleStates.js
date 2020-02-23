@@ -13,11 +13,13 @@ const App = props => {
   return (
     <>
       <div className="App">
-        <p>Now {name} is ￥{price}.</p>
-	<button onClick={() => setPrice(price + 1)}>+1</button>
-	<button onClick={() => setPrice(price - 1)}>-1</button>
-	<button onClick={reset}>reset</button>
-	<input value={name} onChange={e => setName(e.target.value)} />
+        <p>
+          Now {name} is ￥{price}.
+        </p>
+        <button onClick={() => setPrice(price + 1)}>+1</button>
+        <button onClick={() => setPrice(price - 1)}>-1</button>
+        <button onClick={reset}>reset</button>
+        <input value={name} onChange={e => setName(e.target.value)} />
       </div>
     </>
   )
@@ -25,7 +27,7 @@ const App = props => {
 
 App.defaultProps = {
   name: 'kkeeth',
-  price: 1000
+  price: 1000,
 }
 
 export default App

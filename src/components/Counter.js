@@ -11,16 +11,15 @@ const Counter = () => {
 
   const reset = () => setCount(0)
   const double = () => setCount(count * 2)
-  const mod3 = () => setCount(previousCount => {
-    if (previousCount % 3 !== 0) return previousCount
-    return previousCount / 3
-  })
+  const mod3 = () =>
+    setCount(previousCount => {
+      if (previousCount % 3 !== 0) return previousCount
+      return previousCount / 3
+    })
 
   return (
     <>
-      <div className="App">
-        count: {count}
-      </div>
+      <div className="App">count: {count}</div>
       <div>
         <button onClick={increment}>+1</button>
         <button onClick={decrement}>-1</button>
@@ -34,7 +33,7 @@ const Counter = () => {
         <button onClick={double}>x2</button>
       </div>
       <div>
-	<button onClick={mod3}>Divide by 3 only if it is a multiple of 3</button>
+        <button onClick={mod3}>Divide by 3 only if it is a multiple of 3</button>
       </div>
     </>
   )
