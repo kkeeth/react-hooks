@@ -32,6 +32,18 @@ const EventForm = () => {
     if (result) {
       dispatch({ type: DELETE_ALL_EVENTS })
       dispatch({
+        type: ADD_OPERATION_LOG,
+        description: 'completed deleting all events',
+        operatedAt: timeCurrentISO8601(),
+      })
+    }
+  }
+
+  const deleteAllOperationLogs = e => {
+    e.preventDefault()
+    const result = window.confirm('Is it really OK to delete all operation logs?')
+    if (result) {
+      dispatch({
         type: DELETE_ALL_OPERATION_LOGS,
         description: 'completed deleting all logs',
         operatedAt: timeCurrentISO8601(),
@@ -59,6 +71,9 @@ const EventForm = () => {
         </button>
         <button className="btn btn-danger" onClick={deleteAllEvents} disabled={state.events.length === 0}>
           Delate all events
+        </button>
+        <button className="btn btn-danger" onClick={deleteAllOperationLogs} disabled={state.operationLogs.length === 0}>
+          Delate all operation logs
         </button>
       </form>
     </>
