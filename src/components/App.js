@@ -5,6 +5,7 @@ import '../App.css'
 import AppContext from '../contexts/AppContext'
 import EventForm from './EventForm'
 import EventList from './EventList'
+import OperationLogs from './OperationLogs'
 import reducer from '../reducers'
 
 const App = () => {
@@ -18,7 +19,9 @@ const App = () => {
     <AppContext.Provider value={{ state, dispatch }}>
       <div className="App conntainer-fluid">
         <EventForm />
+        <hr />
         <EventList />
+        <OperationLogs />
       </div>
     </AppContext.Provider>
   )
