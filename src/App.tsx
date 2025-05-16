@@ -1,35 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, type FC } from "react";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App: FC = () => {
+	const [count, setCount] = useState<number>(0);
+	const increment = (): void => setCount(count + 1);
+	const decrement = (): void => setCount(count - 1);
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+	const incrementWithFunction = (): void =>
+		setCount((previousCount: number): number => previousCount + 1);
+	const decrementWithFunction = (): void =>
+		setCount((previousCount: number): number => previousCount - 1);
 
-export default App
+	const reset = (): void => setCount(0);
+	const double = (): void => setCount(count * 2);
+	const mod3 = (): void =>
+		setCount((previousCount: number): number => {
+			if (previousCount % 3 !== 0) return previousCount;
+			return previousCount / 3;
+		});
+
+	return (
+		<>
+			<div className="App">count: {count}</div>
+			<div>
+				<button type="button" onClick={increment}>
+					+1
+				</button>
+				<button type="button" onClick={decrement}>
+					-1
+				</button>
+			</div>
+			<div>
+				<button type="button" onClick={incrementWithFunction}>
+					+1
+				</button>
+				<button type="button" onClick={decrementWithFunction}>
+					-1
+				</button>
+			</div>
+			<div>
+				<button type="button" onClick={reset}>
+					reset
+				</button>
+				<button type="button" onClick={double}>
+					x2
+				</button>
+			</div>
+			<div>
+				<button type="button" onClick={mod3}>
+					Divide by 3 only if it is a multiple of 3
+				</button>
+			</div>
+		</>
+	);
+};
+
+export default App;
