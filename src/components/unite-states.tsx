@@ -1,4 +1,4 @@
-import { useState, type FC } from "react";
+import { useState, useEffect, type FC } from "react";
 import "../App.css";
 
 type UnitePrice = {
@@ -6,34 +6,39 @@ type UnitePrice = {
 	price: number;
 };
 
-const UniteStates: FC<UnitePrice> = (
-	props = {
-		name: "kkeeth",
-		price: 1000,
-	},
-) => {
-	const [state, setState] = useState(props);
-	const { name, price } = state;
+const UniteStates: FC<UnitePrice> = ({ name = "kkeeth", price = 1000 }) => {
+	const [state, setState] = useState({ name, price });
+	console.log(state);
+
+	useEffect(() => {
+		console.log("use effect is invoked");
+	});
+
+	const renderPeriod = () => {
+		console.log("renderPeriod renders period");
+		return ".";
+	};
 
 	return (
 		<>
 			<div className="App">
 				<p>
-					Now {state.name} is ￥{price}.
+					Now {state.name} is ￥{state.price}
+					{renderPeriod()}
 				</p>
 				<button
 					type="button"
-					onClick={() => setState({ ...state, price: price + 1 })}
+					onClick={() => setState({ ...state, price: state.price + 1 })}
 				>
 					+1
 				</button>
 				<button
 					type="button"
-					onClick={() => setState({ ...state, price: price - 1 })}
+					onClick={() => setState({ ...state, price: state.price - 1 })}
 				>
 					-1
 				</button>
-				<button type="button" onClick={() => setState(props)}>
+				<button type="button" onClick={() => setState({ name, price })}>
 					reset
 				</button>
 				<input
